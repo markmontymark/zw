@@ -1,0 +1,19 @@
+{
+  "name": "zw",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "convert": "marked ../zw-sent/`date +%Y-%m-%d`.md > ../zw-sent/`date +%Y-%m-%d`.html",
+    "copy":    "cp ../zw-sent/`date +%Y-%m-%d`.html /var/www/zw/",
+    "view":    "open http://127.0.0.1/zw/`date +%Y-%m-%d`.html",
+
+
+    "new":     "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md",
+    "test":    "npm run convert && npm run copy && npm run view"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.3.3"
+  }
+}
