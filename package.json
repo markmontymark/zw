@@ -8,10 +8,11 @@
     "view":    "open http://127.0.0.1/zw/`date +%Y-%m-%d`.html",
 
 
-    "new":     "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md",
+    "new":     "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md && vi ../zw-sent/`date +%Y-%m-%d`.md",
+    "emails": "pbcopy < ../zw-notes/emails",
     "test":    "npm run convert && npm run copy && npm run view"
   },
-  "author": "",
+  "author": "Mark Koopman",
   "license": "MIT",
   "dependencies": {
     "marked": "^0.3.3"
