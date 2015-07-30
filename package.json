@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "convert": "marked ../zw-sent/`date +%Y-%m-%d`.md > ../zw-sent/`date +%Y-%m-%d`.html",
-    "copy":    "cp ../zw-sent/`date +%Y-%m-%d`.html /var/www/zw/",
-    "view":    "open http://127.0.0.1/zw/`date +%Y-%m-%d`.html",
+    "_newzw":   "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md",
+    "_convert": "marked ../zw-sent/`date +%Y-%m-%d`.md > ../zw-sent/`date +%Y-%m-%d`.html",
+    "_convert_last": "marked `ls -rt ../zw-sent/*.md` > ../zw-sent/`date +%Y-%m-%d`.html",
+    "_copy":    "cp ../zw-sent/`date +%Y-%m-%d`.html /var/www/zw/",
+    "_view":    "open http://127.0.0.1/zw/`date +%Y-%m-%d`.html",
+    "_edit":    "vi ../zw-sent/`date +%Y-%m-%d`.md",
+    "_clip":    "pbcopy < ../zw-notes/emails",
 
-
-    "new":     "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md && vi ../zw-sent/`date +%Y-%m-%d`.md",
-    "emails": "pbcopy < ../zw-notes/emails",
-    "test":    "npm run convert && npm run copy && npm run view"
+    "new":     "npm run _newzw && npm run _edit",
+    "edit":    "npm run _edit",
+    "emails":  "npm run _clip",
+    "test":    "npm run _convert_last && npm run _copy && npm run _view"
   },
   "author": "Mark Koopman",
   "license": "MIT",
