@@ -3,22 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "_newzw":   "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md",
-    "_convert": "marked ../zw-sent/`date +%Y-%m-%d`.md > ../zw-sent/`date +%Y-%m-%d`.html",
-    "_convert_last": "marked `ls -rt ../zw-sent/*.md` > ../zw-sent/`date +%Y-%m-%d`.html",
-    "_copy":    "cp ../zw-sent/`date +%Y-%m-%d`.html /var/www/zw/",
-    "_view":    "open http://127.0.0.1/zw/`date +%Y-%m-%d`.html",
-    "_edit":    "vi ../zw-sent/`date +%Y-%m-%d`.md",
-    "_clip":    "pbcopy < ../zw-notes/emails",
-
-    "new":     "npm run _newzw && npm run _edit",
-    "edit":    "npm run _edit",
-    "emails":  "npm run _clip",
-    "test":    "npm run _convert_last && npm run _copy && npm run _view"
+    "_newzw": "cp ../zw-notes/email.md ../zw-sent/`date +%Y-%m-%d`.md",
+    "_convert": "./node_modules/.bin/marked --gfm --tables ../zw-sent/`date +%Y-%m-%d`.md > ../zw-sent/`date +%Y-%m-%d`.html",
+    "_convert_last": "./node_modules/.bin/marked --gfm --tables template.md > ../zw-sent/`date +%Y-%m-%d`.html",
+    "_copy": "cp ../zw-sent/`date +%Y-%m-%d`.html /var/www/zw/",
+    "_view": "open http://127.0.0.1:6480/zw/`date +%Y-%m-%d`.html",
+    "_edit": "vi ../zw-sent/`date +%Y-%m-%d`.md",
+    "_clip": "pbcopy < ../zw-notes/emails",
+    "ohai": "./bin/ohai.js ../zw-sent/",
+    "new": "npm run _newzw && npm run _edit",
+    "edit": "npm run _edit",
+    "editlatest": "vi `ls -rt ../zw-sent/*.md | tail -1`",
+    "emails": "npm run _clip",
+    "test": "npm run _convert_last && npm run _copy && npm run _view",
+    "m": "npm run test",
+    "make": "npm run test"
   },
   "author": "Mark Koopman",
   "license": "MIT",
   "dependencies": {
-    "marked": "^0.3.3"
+    "graceful-fs": "^4.1.2",
+    "marked": "^0.3.6",
+    "walk": "^2.3.9"
   }
 }
